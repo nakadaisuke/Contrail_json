@@ -54,7 +54,7 @@ class Contrail_Json():
                % (global_defaults['username'], global_defaults['password'], global_defaults['tenant'])
         res = requests.post(url=url, data=data, headers=headers)
         if str(res.status_code) != '200':
-            print 'error returned code is %s' % res.status_code
+            self.error_handler(res.status_code ,res.text)
 
         res = json.loads(res.text)
         auth_token = res["access"]["token"]["id"]

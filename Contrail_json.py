@@ -59,9 +59,9 @@ class Contrail_Json():
         res = json.loads(res.text)
         auth_token = res["access"]["token"]["id"]
 
-        self.contrail_json(auth_token, global_defaults)
+        self.get_contrail(auth_token, global_defaults)
 
-    def contrail_json(self, auth_token, global_defaults):
+    def get_contrail(self, auth_token, global_defaults):
         url = 'http://%s:8082/%s' % (global_defaults['contrail_api'], global_defaults['api_dir'])
         headers = {'Content-Type': 'application/json; charset=UTF-8', 'X-Auth-Token': auth_token}
 

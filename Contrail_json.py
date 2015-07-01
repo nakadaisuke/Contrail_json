@@ -9,10 +9,10 @@ class Contrail_Json():
     def __init__(self, args_str = None):
         self._args = None
         self.global_defaults = {
-            'keystone_api' : '172.27.113.85',
-            'contrail_api' : '172.27.113.85',
+            'keystone_api' : '127.0.0.1',
+            'contrail_api' : '127.0.0.1',
             'username': 'admin',
-            'password': 'juniper123',
+            'password': 'password',
             'tenant': "demo",
             'operation' : 'get',
             'body' : '',

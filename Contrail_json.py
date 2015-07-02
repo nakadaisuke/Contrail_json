@@ -9,10 +9,10 @@ class Contrail_Json():
     def __init__(self, args_str = None):
         self._args = None
         self.global_defaults = {
-            'keystone_api' : '127.0.0.1',
-            'contrail_api' : '127.0.0.1',
+            'keystone_api' : '172.27.113.85',
+            'contrail_api' : '172.27.113.85',
             'username': 'admin',
-            'password': 'password',
+            'password': 'juniper123',
             'tenant': "demo",
             'operation' : 'get',
             'body' : '',
@@ -77,7 +77,7 @@ class Contrail_Json():
             if str(res.status_code) != '200':
                 self.error_handler(res.status_code ,res.text)
             else:
-                self.output_json(res.json(), global_defaults['trace'])
+                print 'delete "%s" succesfully' % global_defaults['api_dir']
 
         if global_defaults['operation'] == 'post':
             if global_defaults['body'] is None:

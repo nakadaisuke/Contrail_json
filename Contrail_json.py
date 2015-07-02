@@ -18,6 +18,7 @@ class Contrail_Json():
             'body' : '',
             'api_dir' : '',
             'trace' : True,
+            'port' : '8082',
         }
         self.parse_args(args_str, self.global_defaults)
 
@@ -36,6 +37,7 @@ class Contrail_Json():
         parser.add_argument('-b', '--body', dest='body', help='Set JSON message')
         parser.add_argument('-d', '--directory', dest='api_dir', help='Set API direcroty')
         parser.add_argument('-T', '--trace', dest='trace', help='Output trace')
+        parser.add_argument('-P', '--port', dest='port', help='Destination port number')
 
         args = vars(parser.parse_args())
         self.create_parameter(args, global_defaults)
@@ -62,7 +64,7 @@ class Contrail_Json():
         self.get_contrail(auth_token, global_defaults)
 
     def get_contrail(self, auth_token, global_defaults):
-        url = 'http://%s:8082/%s' % (global_defaults['contrail_api'], global_defaults['api_dir'])
+        url = 'http://%s:%s/%s' % (global_defaults['contrail_api'],global_defaults['port'], global_defaults['api_dir'])
         headers = {'Content-Type': 'application/json; charset=UTF-8', 'X-Auth-Token': auth_token}
 
         if global_defaults['operation'] == 'get':
